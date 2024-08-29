@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import './Home.module.css'
+import styles from './Home.module.css';
 
 function Home() {
     const [username, setUsername] = useState('');
@@ -16,28 +16,36 @@ function Home() {
     };
 
     return (
-        <div className='container'>
-            <form onSubmit={(e) => { e.preventDefault(); handleLogin(); }}>
-                <label htmlFor="username">Username</label>
-                <input
-                    id="username"
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
-                <label htmlFor="password">Password</label>
-                <input
-                    id="password"
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">Sign In</button>
-            </form>
+        <div className={styles.home}>
+            <div className={styles.container}>
+                <form onSubmit={(e) => { e.preventDefault(); handleLogin(); }}>
+                    <label className={styles.usernameLabel}>Username</label><br />
+                    <input
+                        className={styles.username}
+                        id="username"
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                    <br />
+                    <label className={styles.passwordLabel}>Password</label><br />
+                    <input
+                        className={styles.password}
+                        id="password"
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <br />
+                    <button 
+                        type="submit"
+                        className={styles.SignInBtn}>Sign In</button>
+                </form>
+            </div>
         </div>
     );
 }
